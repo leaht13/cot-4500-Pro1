@@ -1,1 +1,2 @@
-
+# No libraries or packages are required but if you want to add in the math library for possible edits it is:
+import math
