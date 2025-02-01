@@ -49,4 +49,17 @@ root = bisection(f, a, b, tol, max_iter)
 print(f"Approximated root: {root}")
 
 
+# test
+def g(x):
+    return (x + 4) / 7 
+
+# Parameters
+p0 = 1.0  
+TOL = 0.0001 
+N0 = 100 
+
+root = fixed_point_iteration(g, p0, TOL, N0)
+
+
+
 
