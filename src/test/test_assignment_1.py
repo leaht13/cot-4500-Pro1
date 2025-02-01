@@ -49,6 +49,26 @@ root = bisection(f, a, b, tol, max_iter)
 print(f"Approximated root: {root}")
 
 
+# The fixed point iteration
+def fixed_point_iteration(g, p0, TOL, N0):
+    i = 1
+
+    while i <= N0:
+        p = g(p0)
+        
+        
+        if abs(p - p0) < TOL:
+            print(f"Approximated root: {p}")
+            print("success")
+            return p  
+        p0 = p
+        i += 1
+    
+   
+    print("failure")
+    return None  
+
+
 # test
 def g(x):
     return (x + 4) / 7 
@@ -60,6 +80,47 @@ N0 = 100
 
 root = fixed_point_iteration(g, p0, TOL, N0)
 
+
+
+
+# The Newton-Raphson method 
+
+def newton_method(f, f_prime, pprev, TOL, N0):
+    
+    i = 1
+
+    while i <= N0:
+       
+        if f_prime(pprev) != 0:
+            
+            pnext = pprev - f(pprev) / f_prime(pprev)
+
+            if abs(pnext - pprev) < TOL:
+                print(f"Approximated root: {pnext}")
+                print("success")
+                return pnext
+            i+=1
+            pprev = pnext  
+        else:
+
+            print("Unsuccessful: Derivative is zero.")
+            return None
+
+    print("Unsuccessful: Maximum iterations performed.")
+    return None
+
+
+# test
+def f(x):
+    return x**2 - 2  
+def f_prime(x):
+    return 2 * x  
+
+pprev = 1.0 
+TOL = 0.0001  
+N0 = 100 
+
+root = newton_method(f, f_prime, pprev, TOL, N0)
 
 
 
