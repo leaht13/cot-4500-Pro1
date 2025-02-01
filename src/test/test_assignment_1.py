@@ -22,3 +22,31 @@ while diff >= tol:
 print(f"\nConvergence after {iter} iterations")
 
 
+# The Bisection Method
+def bisection(f, a, b, tol, max_iter):
+    i = 0  
+
+    while abs(b - a) > tol and i < max_iter:
+        i += 1
+        p = (a + b) / 2  
+        
+        if (f(a) < 0 and f(p) > 0) or (f(a) > 0 and f(p) < 0):
+            b = p  
+        else:
+            a = p  
+
+    return p
+
+def f(x):
+    return x**2 - 2  
+
+a = 0  
+b = 3  
+tol = 0.000001  
+max_iter = 100  
+
+root = bisection(f, a, b, tol, max_iter)
+print(f"Approximated root: {root}")
+
+
+
